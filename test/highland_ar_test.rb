@@ -83,7 +83,7 @@ class TCBOO_SetterTest < HighlandARTestCase
 
     # Round 2
     @arena.expects(:tcboo_shuffle_combatants).with(%w[Fred Hermione]).returns(%w[Fred Hermione])
-    @arena.expects(:tcboo_immortal_combat).with('Fred', 'Hermione').returns('Hermione')
+    @arena.expects(:tcboo_immortal_combat).with('Fred', 'Hermione').returns('Hermione') # obviously
 
     @arena.champion = %w[Fred George Ron Harry]
     assert_equal('Hermione', @arena.champion)
@@ -93,7 +93,7 @@ class TCBOO_SetterTest < HighlandARTestCase
     # Round 1
     @arena.expects(:tcboo_shuffle_combatants).with(%w[A B C D E F G H I]).returns(%w[A B C D E F G H I])
     @arena.expects(:tcboo_immortal_combat).with('A', 'B').returns('A')
-    @arena.expects(:tcboo_immortal_combat).with('C', 'D').returns('C')  # just making sure you're paying attention
+    @arena.expects(:tcboo_immortal_combat).with('C', 'D').returns('C')
     @arena.expects(:tcboo_immortal_combat).with('E', 'F').returns('E')
     @arena.expects(:tcboo_immortal_combat).with('G', 'H').returns('G')
     @arena.expects(:tcboo_immortal_combat).with('I', nil).returns('I')

@@ -1,9 +1,9 @@
 HighlandAR
 ==========
 
-In episode #150 (I think?) of the Ruby Show podcast[1], Jason made some offhand
-joke to the effect that someone should write a plugin that adds a
-.there_can_be_only_one method to ActiveRecord::Base.
+In episode #150 of the Ruby Show podcast[1], Jason jokingly suggested that
+someone should write a plugin that adds a .there_can_be_only_one method to
+ActiveRecord::Base.
 
 I thought that would be funny.  So I wrote it.
 
