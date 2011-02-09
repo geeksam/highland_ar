@@ -117,7 +117,7 @@ class TCBOO_SetterTest < HighlandARTestCase
     assert_equal('I', @arena.champion)
   end
   
-  test "this test should actually be random; I include it solely for the amusing side effects" do
+  test "this 'test' (a) is random and (b) has no assertions; I include it solely for the amusing side effects" do
     begin
       puts ''
       $debug = true

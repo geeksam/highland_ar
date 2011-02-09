@@ -1,13 +1,23 @@
 HighlandAR
 ==========
 
-Introduction goes here.
+In episode #150 (I think?) of the Ruby Show podcast[1], Jason made some offhand joke to the effect that
+someone should write a plugin that adds a .there_can_be_only_one method to ActiveRecord::Base.
 
+I thought that would be funny.  So I wrote it.
 
-Example
-=======
+Rather than make this a one liner[2], I decided to implement a random(ish) selection process.  This way, objects with a .there_can_be_only_one association can accept multiple candidates, who will compete for the one available slot until only one remains.
 
-Example goes here.
+See the tests for more details.  Oh, and please email me if you actually use this in a project.
 
+Enjoy,
+-Sam
 
-Copyright (c) 2011 [name of plugin creator], released under the MIT license
+--
+
+[1] http://rubyshow.com/episodes/150
+[2] alias :there_can_be_only_one :has_one
+
+--
+
+Copyright (c) 2011 Sam Livingston-Gray, released under the MIT license
