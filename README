@@ -1,14 +1,19 @@
 HighlandAR
 ==========
 
-In episode #150 (I think?) of the Ruby Show podcast[1], Jason made some offhand joke to the effect that
-someone should write a plugin that adds a .there_can_be_only_one method to ActiveRecord::Base.
+In episode #150 (I think?) of the Ruby Show podcast[1], Jason made some offhand
+joke to the effect that someone should write a plugin that adds a
+.there_can_be_only_one method to ActiveRecord::Base.
 
 I thought that would be funny.  So I wrote it.
 
-Rather than make this a one liner[2], I decided to implement a random(ish) selection process.  This way, objects with a .there_can_be_only_one association can accept multiple candidates, who will compete for the one available slot until only one remains.
+Rather than make this a one liner[2], I decided to implement a random(ish)
+selection process. This way, objects with a .there_can_be_only_one association
+can accept multiple candidates, who will compete for the one available slot until
+only one remains.
 
-See the tests for more details.  Oh, and please email me if you actually use this in a project.
+See the tests or the EXAMPLE file for more details. Oh, and please email me[3] 
+if you actually use this in a project, because I think that would be hilarious.
 
 Enjoy,
 -Sam
@@ -17,6 +22,7 @@ Enjoy,
 
 [1] http://rubyshow.com/episodes/150
 [2] alias :there_can_be_only_one :has_one
+[3] eval('%w[geeksam gmail].join("@") + ".com"')
 
 --
 

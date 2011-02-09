@@ -1,0 +1,76 @@
+Create a new Rails app, install the plugin, and create two models as follows:
+
+  class CreateLuchadores < ActiveRecord::Migration
+    def self.up
+      create_table :luchadores do |t|
+        t.string :name
+
+        t.timestamps
+      end
+    end
+
+    def self.down
+      drop_table :luchadores
+    end
+  end
+
+  class CreateTournaments < ActiveRecord::Migration
+    def self.up
+      create_table :tournaments do |t|
+        t.integer :champion_id
+
+        t.timestamps
+      end
+    end
+
+    def self.down
+      drop_table :tournaments
+    end
+  end
+
+Once you've done that, here's a complete test file for your entertainment:
+
+  require 'test_helper'
+
+  class Tournament < ActiveRecord::Base
+    there_can_be_only_one :luchadore
+  end
+
+  class Luchadore < ActiveRecord::Base
+    def to_s
+      name
+    end
+  end
+
+  LuchadoresNames = [
+    'El Tigre Mojado',
+    'Super en Fuego',
+    'Tornado Gigante',
+    'Zorro mas Sexy',
+    'Chile Azul',
+    'El Griego de la Noche',
+    'Zorro Blanco',
+    'Vaquero Supremo',
+    'Presidente Ridiculoso',
+    'El Monkey Mejor',
+  ]
+
+  class TournamentTest < ActiveSupport::TestCase
+    def setup
+      LuchadoresNames.each do |name|
+        Luchadore.create(:name => name)
+      end
+    end
+
+    test "there can be only one" do
+      tournament = Tournament.new
+      begin
+        $debug = true
+        tournament.luchadore = Luchadore.all
+        puts ''
+        puts 'THE WINNER IS:  %s!!!!' % tournament.luchadore
+      ensure
+        $debug = false
+      end
+    end
+  end
