@@ -32,8 +32,10 @@ module HighlandAR
     def tcboo_tournament(combatants)
       @power_rankings = {} # Start each tournament with a level playing field.  Also:  thread safety?  In a joke plugin?  Um... no.
 
+      round = 0
       while combatants.length > 1
         current_round_winners = []
+        puts "--- ROUND #{round+=1} ---" if $debug
         tcboo_shuffle_combatants(combatants).each_slice(2) do |a, b|
           current_round_winners << tcboo_immortal_combat(a, b)
         end
