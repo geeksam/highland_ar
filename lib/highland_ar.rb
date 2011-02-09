@@ -10,7 +10,7 @@ module HighlandAR
     protected
     def define_tcboo_setter(association_name)
       define_method "#{association_name}_with_immortal_combat=" do |*combatants|
-        champion = tcboo_tournament(combatants.flatten)
+        champion = tcboo_tournament(combatants.flatten) # Gimme gimme gimme FRIED CHICKEN!
         self.send(:"#{association_name}_without_immortal_combat=", champion)
       end
       alias_method_chain :"#{association_name}=", :immortal_combat
