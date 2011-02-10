@@ -2,7 +2,6 @@ module HighlandAR
   module ClassMethods
     # There are no options. THERE CAN BE ONLY ONE!
     def there_can_be_only_one(association_name)
-      # puts "There can be only one #{association_name} in #{self}!"
       has_one association_name
       define_tcboo_setter(association_name)
     end
@@ -45,7 +44,9 @@ module HighlandAR
       combatants.first
     end
 
-    # Shuffle the array to avoid being unfair to the Nth combatant in a list of N combatants where N is odd.
+    # Shuffle the array to avoid being unfair to the Nth combatant in a list of N combatants
+    # where N is odd. (For example, if there are nine combatants, the ninth wins rounds 1-3
+    # by default, and faces overwhelming odds in round 4.)    
     # Do it in a separate function for mockability.
     def tcboo_shuffle_combatants(combatants)
       combatants.shuffle
