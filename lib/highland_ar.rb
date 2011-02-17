@@ -29,7 +29,7 @@ module HighlandAR
     end
     
     def tcboo_tournament(combatants)
-      @power_rankings = {} # Start each tournament with a level playing field.  Also:  thread safety?  In a joke plugin?  Um... no.
+      @power_rankings = {} # Start each tournament with a level playing field
 
       round = 0
       while combatants.length > 1
