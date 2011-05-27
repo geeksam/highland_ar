@@ -56,6 +56,7 @@ class TCBOO_SetterTest < HighlandARTestCase
   end
   
   test "champion selection functions as a playoff tree, two entrants" do
+    @arena.expects(:tcboo_shuffle_combatants).with(%w[Fred George]).returns(%w[Fred George])
     @arena.expects(:tcboo_immortal_combat).with('Fred', 'George').returns('George')
     @arena.champion = %w[Fred George]
     assert_equal('George', @arena.champion)
