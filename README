@@ -12,6 +12,35 @@ selection process. This way, objects with a .there_can_be_only_one association
 can accept multiple candidates, who will compete for the one available slot until
 only one remains.
 
+Here's a short example:
+
+  class Fight < ActiveRecord::Base
+    there_can_be_only_one :winner
+  end
+
+  class Man < ActiveRecord::Base
+  end
+
+  class String
+    def Man
+      ::Man.new(:name => titlecase + ' Man')
+    end
+  end
+
+  particle_man = "Particle".Man  # Doin' the things a particle can
+  triangle_man = "Particle".Man  # Triangle man hates Particle Man
+  person_man   = "Person".Man    # Hit on the head with a frying pan
+
+  Fight.new.tap do |fight|
+    fight.winner = [triangle_man, particle_man]
+    fight.winner # => triangle_man
+  end
+
+  Fight.new.tap do |fight|
+    fight.winner = [triangle_man, person_man]
+    fight.winner # => triangle_man
+  end
+
 See the tests or the EXAMPLE file for more details. Oh, and please email me[3] 
 if you actually use this in a project, because I think that would be hilarious.
 

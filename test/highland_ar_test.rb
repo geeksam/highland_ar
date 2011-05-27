@@ -128,3 +128,46 @@ class TCBOO_SetterTest < HighlandARTestCase
     end
   end
 end
+
+class TmbgReferenceTest < HighlandARTestCase
+  class Fight < NotActuallyActiveRecordBase
+    include HighlandAR
+    there_can_be_only_one :winner
+  end
+
+  class Man < NotActuallyActiveRecordBase
+    def initialize(attrs = {})
+      @name = attrs[:name]
+    end
+    def inspect
+      "<#{@name}>"
+    end
+  end
+
+  class ::String
+    def Man
+      TmbgReferenceTest::Man.new(:name => titlecase + ' Man')
+    end
+  end
+
+  test "the example from the README" do
+    particle_man = "Particle".Man  # Doin' the things a particle can
+    triangle_man = "Triangle".Man  # Triangle man hates Particle Man
+    person_man   = "Person".Man    # Hit on the head with a frying pan
+
+    Fight.new.tap do |fight|
+      fight.expects(:tcboo_shuffle_combatants).with([triangle_man, particle_man]).returns([triangle_man, particle_man])
+      fight.expects(:tcboo_immortal_combat).with(triangle_man, particle_man).returns(triangle_man)
+      fight.winner = [triangle_man, particle_man]
+      assert_equal triangle_man, fight.winner
+    end
+
+    Fight.new.tap do |fight|
+      fight.expects(:tcboo_shuffle_combatants).with([triangle_man, person_man]).returns([triangle_man, person_man])
+      fight.expects(:tcboo_immortal_combat).with(triangle_man, person_man).returns(triangle_man)
+      fight.winner = [triangle_man, person_man]
+      assert_equal triangle_man, fight.winner
+    end
+  end
+end
+
