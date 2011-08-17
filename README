@@ -28,7 +28,7 @@ Here's a short example:
   end
 
   particle_man = "Particle".Man  # Doin' the things a particle can
-  triangle_man = "Particle".Man  # Triangle man hates Particle Man
+  triangle_man = "Triangle".Man  # Triangle man hates Particle Man
   person_man   = "Person".Man    # Hit on the head with a frying pan
 
   Fight.new.tap do |fight|
